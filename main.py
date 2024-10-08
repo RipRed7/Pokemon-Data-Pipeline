@@ -1,5 +1,6 @@
 #connect to api
 import requests
+import json
 
 base_url = "https://pokeapi.co/api/v2/"
 
@@ -18,8 +19,10 @@ pokemoneName = "torterra"
 pokemonInfo = getPokemonInfo(pokemoneName)
 
 if pokemonInfo:
-    print(f"Name: {pokemonInfo["name"]}")
-    print(f"ID: {pokemonInfo["id"]}")
-    print(f"Height: {pokemonInfo["height"]}")
-    print(f"Weight: {pokemonInfo["weight"]}")
+    print(f"Name: {pokemonInfo['name'].capitalize()}")
+    print(f"ID: {pokemonInfo['id']}")
+    print(f"Height: {pokemonInfo['height']}")
+    print(f"Weight: {pokemonInfo['weight']}")
     
+with open("pokemonData.json", "w") as json_file:
+    json.dump(pokemonInfo, json_file, indent=4)
